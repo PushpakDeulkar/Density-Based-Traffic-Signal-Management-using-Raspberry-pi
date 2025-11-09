@@ -1,0 +1,24 @@
+A Hybrid Traffic-Light Controller is proposed to address urban traffic congestion in developing countries where vehicle flow is unpredictable. The system combines real-time, camera-based traffic density estimation with familiar fixed-time control for more predictable road conditions. At the core of the system is a Raspberry Pi which enables quick, on-site decision-making without significant reliance on cloud processing. By using pipelined camera activation and optimized frame rates, the system processes data more quickly and efficiently. In simulated tests at a four-way intersection, this method reduced processing time by 96.67% and led to smoother traffic flow compared to traditional fixed-time systems. The proposed system is a low-cost, scalable, and responsive solution for modern urban traffic management
+
+A.	Density Estimation via Virtual Zoning
+Cameras turn the view into a top-down perspective and split the road into zones. Instead of counting cars, the system checks how many zones are occupied to estimate congestion. This is faster, more efficient, and works well in different lighting and weather.
+
+
+B.	Trans-Prod-Hybrid Logic
+The system mixes Transyt’s fixed cycles with Prodyn’s real-time adaptability. Unpredictable roads use adaptive control, while stable ones stick to preset timings balancing responsiveness with reliability. 
+
+
+C.	Frame Rate Optimization
+Cameras run at 1 FPS instead of 30 FPS, reducing processing by about 97% while still accurately measuring congestion.
+
+
+D.	Pipelined Camera Activation
+To avoid delays, the next road’s camera starts processing before the current green phase ends. For example, during the last 10 seconds of Road-2’s green light, Road-3’s traffic is already being analyzed.
+
+
+E.	Communication and Control
+The Raspberry Pi sends traffic light commands to ESP8266 modules via lightweight protocols (HTTP/MQTT), which control the signals. A simple ACK system ensures commands are executed properly.
+
+
+F.	Fail-Safe Mechanism
+If something fails, the system switches to a fixed cycle for safety. Strong network security (WPA2/WPA3, VLAN) keeps everything protected. Roads 1 & 3 use adaptive control, while Roads 2 & 4 stick to preset timings.
