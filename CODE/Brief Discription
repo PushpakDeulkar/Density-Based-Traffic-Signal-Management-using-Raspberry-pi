@@ -1,0 +1,10 @@
+The Raspberry pi after processing calculates the Green, Red and Yellow signal time based on the Density.
+then the command goes to the master ESP and the Green light is ON.
+Here MAster means the one employed on the Density based signal and Slave means the one employed on the static timer based signal.
+the reason to do this is not all Roads are heavily congested, some can still operate easily on the static time signal also.
+therefore, when the static timer green signal is about to end , the slave gives a on command to the master 10 sec before the static timer ends.
+this we have given a name as  "PIPELINED CAMERA ACTIVATION".
+
+and within this 10 sec Rpi can process the live feed at 2FPS instead of 30FPS rate which reduces the Processing load on the RPI local server
+
+also we are using local server instead of cloud to reduce the data transfer time.
